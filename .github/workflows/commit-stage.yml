@@ -21,11 +21,11 @@ jobs:
         with:
           distribution: temurin
           java-version: 17
-          cache: gradle
+          cache: maven
       - name: Build, unit tests and integration tests
         run: |
           chmod +x mvnw
-          ./mvnw package
+          ./mvnw -B package
       - name: Code vulnerability scanning
         uses: anchore/scan-action@v3
         id: scan
