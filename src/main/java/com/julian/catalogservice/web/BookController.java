@@ -1,5 +1,6 @@
 package com.julian.catalogservice.web;
 
+import com.julian.catalogservice.config.PolarProperties;
 import com.julian.catalogservice.domain.Book;
 import com.julian.catalogservice.domain.BookService;
 
@@ -20,10 +21,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("books")
 public class BookController {
 
+    private PolarProperties polarProperties;
+
     private final BookService bookService;
 
-    public BookController(BookService bookService) {
+    public BookController(BookService bookService, PolarProperties polarProperties) {
         this.bookService = bookService;
+        this.polarProperties = polarProperties;
+    }
+
+    @GetMapping("/")
+    public String getGreeting() {
+        return polarProperties.getGreeting();
     }
 
     @GetMapping
