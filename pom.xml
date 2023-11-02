@@ -111,6 +111,7 @@
 				</executions>
 				<configuration>
 					<imageName>${module.image.name}</imageName>
+					<builder>ghcr.io/thomasvitale/java-builder-arm64</builder>
 				</configuration>
 			</plugin>
 		</plugins>
