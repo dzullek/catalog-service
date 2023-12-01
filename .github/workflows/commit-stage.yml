@@ -58,8 +58,8 @@ jobs:
           cache: gradle
       - name: Build container image
         run: |
-          chmod +x gradlew
-          ./gradlew bootBuildImage \
+          chmod +x mvnw
+          ./mvnw spring-boot:build-image\
             --imageName ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }}
       - name: OCI image vulnerability scanning
         uses: anchore/scan-action@v3
