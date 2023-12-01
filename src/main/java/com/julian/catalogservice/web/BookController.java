@@ -6,6 +6,8 @@ import com.julian.catalogservice.domain.BookService;
 
 import jakarta.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +22,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("books")
 public class BookController {
+
+    Logger logger = LoggerFactory.getLogger(BookController.class);
 
     private PolarProperties polarProperties;
 
@@ -37,6 +41,7 @@ public class BookController {
 
     @GetMapping
     public Iterable<Book> get() {
+        logger.info("GET request. BookService viewBookList");
         return bookService.viewBookList();
     }
 
